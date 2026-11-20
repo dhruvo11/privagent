@@ -17,7 +17,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "assets": "node scripts/fetch-assets.mjs",
-    "postinstall": "wxt prepare && node scripts/fetch-assets.mjs",
+    "postinstall": "node scripts/fetch-assets.mjs && wxt prepare",
     "uipreview": "node scripts/uipreview.mjs"
   },
   "devDependencies": {
