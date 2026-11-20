@@ -1,5 +1,7 @@
 # PrivAgent
 
+[![Licence: Apache-2.0](https://img.shields.io/badge/licence-Apache--2.0-blue.svg)](LICENSE)
+
 A privacy-preserving vision agent that runs in the browser.
 
 Built for the Smart India Hackathon problem
@@ -14,6 +16,37 @@ sanitized, tokenized context to a server-side open-weights VLM. The VLM replies 
 action; the extension swaps the tokens back for real values locally and performs it.
 
 The server never sees a single piece of your personal data. It sees `⟦PROFILE.EMAIL⟧`.
+
+## Use it
+
+**See the privacy filter in two minutes — nothing to install but the extension.**
+
+1. Download **`privagent-chrome-edge-brave.zip`** from the
+   [latest release](https://github.com/dhruvo11/privagent/releases/latest) and unzip it.
+2. Open `chrome://extensions` (or `edge://extensions`, `brave://extensions`), turn on
+   **Developer mode**, press **Load unpacked**, and choose the unzipped folder.
+   Firefox: `about:debugging` → *This Firefox* → **Load Temporary Add-on** → choose
+   **`privagent-firefox.zip`** itself.
+3. Click the PrivAgent icon to open the side panel, expand **My vault**, press **Load demo
+   profile** (fake data), open any page with a form and press **Analyze**. Drag the divider:
+   left is your screen, right is what a server would receive. Nothing is sent anywhere.
+
+**Let the agent fill forms and answer questions** — it needs the planner server, which runs
+on your own machine. Install [Node.js 20+](https://nodejs.org) and
+[uv](https://docs.astral.sh/uv/getting-started/installation/), then:
+
+```bash
+git clone https://github.com/dhruvo11/privagent.git
+cd privagent
+./scripts/setup.sh        # Windows: double-click scripts\setup.cmd
+./scripts/start.sh        # Windows: .\scripts\start.ps1
+```
+
+That opens the demo pages, the planner, and Chrome with the extension loaded. In the side
+panel type *"fill this form with my profile and stop before submitting"* on
+`http://localhost:5173/apply.html`. With no model configured it uses a deterministic planner;
+to use an open-weights vision model locally, see [docs/NEW_LAPTOP.md](docs/NEW_LAPTOP.md).
+The five-minute demo script is [docs/DEMO.md](docs/DEMO.md).
 
 ---
 
@@ -275,6 +308,13 @@ From the repo root:
 | `uv run python -m eval.run_all` | every number above, in a real browser |
 | `uv run python -m eval.run_tasks` | the 19-task agent benchmark, with the wire check (`--vlm ollama` for a local model, `--vlm mock-injected` for the injection stress test) |
 | `uv run python -m eval.smoke_extension` | boots the **packed** extension and checks it comes up clean |
+
+## Licence
+
+Apache-2.0 — see [LICENSE](LICENSE). The trained UI detector
+(`extension/public/models/ui_detector.onnx`) and the training code in `ml/` are AGPL-3.0,
+because they are built with Ultralytics YOLO; the bundled YuNet face model is MIT. Details in
+[NOTICE](NOTICE).
 
 ## A note on data
 

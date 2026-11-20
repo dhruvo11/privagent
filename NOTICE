@@ -1,0 +1,36 @@
+PrivAgent
+Copyright 2026 TechVistaara
+
+Licensed under the Apache License, Version 2.0 (see LICENSE), except for the
+components listed below, which keep their own licences.
+
+Third-party models bundled in extension/public/
+-----------------------------------------------
+
+models/face_detection_yunet.onnx
+  YuNet face detector, from the OpenCV Model Zoo
+  (https://github.com/opencv/opencv_zoo/tree/main/models/face_detection_yunet).
+  MIT License. Copyright (c) 2020 Shiqi Yu.
+
+tesseract/eng.traineddata.gz
+  Tesseract OCR English language data (https://github.com/tesseract-ocr/tessdata_fast).
+  Apache License 2.0.
+
+models/ui_detector.onnx  — AGPL-3.0
+  Our own UI and PII detector, fine-tuned from Ultralytics YOLO11n
+  (https://github.com/ultralytics/ultralytics). Ultralytics licenses YOLO and the
+  models trained with it under the GNU Affero General Public License v3.0, so this
+  model file, and the training code in ml/ that produces it, are distributed under
+  AGPL-3.0 rather than Apache-2.0. The complete source needed to reproduce it — the
+  synthetic data generator, the training script and its configuration — is
+  published in this repository, as AGPL-3.0 requires. Anyone redistributing the
+  model, or a product built on it, must do the same or obtain an Ultralytics
+  Enterprise licence. Without the file, the extension still runs on its other
+  layers (DOM, YuNet, OCR).
+
+Dependencies installed at build time
+------------------------------------
+
+The extension and server download their libraries (onnxruntime-web, Tesseract.js,
+WXT, FastAPI and others) from npm and PyPI during setup; each is used under its own
+licence and none is redistributed in this repository.

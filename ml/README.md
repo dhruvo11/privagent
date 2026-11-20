@@ -3,6 +3,11 @@
 The on-device detector that covers what the DOM cannot see: canvas-rendered apps,
 PDF pages, screenshots-of-screens, cross-origin frames.
 
+> **Licence.** Training uses Ultralytics YOLO, which is AGPL-3.0, and Ultralytics
+> applies that licence to the models it trains. This folder and the model it produces
+> (`extension/public/models/ui_detector.onnx`) are therefore AGPL-3.0, unlike the rest of
+> the repository (Apache-2.0). See `NOTICE` at the root.
+
 ## Why a custom model at all
 
 The DOM privacy layer already handles DOM-rendered pages exactly, in 2–20 ms, with
