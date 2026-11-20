@@ -1,5 +1,6 @@
 # PrivAgent
 
+[![Tests](https://github.com/dhruvo11/privagent/actions/workflows/ci.yml/badge.svg)](https://github.com/dhruvo11/privagent/actions/workflows/ci.yml)
 [![Licence: Apache-2.0](https://img.shields.io/badge/licence-Apache--2.0-blue.svg)](LICENSE)
 
 A privacy-preserving vision agent that runs in the browser.
